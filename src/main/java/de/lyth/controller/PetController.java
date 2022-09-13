@@ -9,7 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-import javax.xml.bind.ValidationException;
+import javax.validation.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class PetController {
     private final PetService petService;
 
     @PostMapping
-    public PetDTO savePet(@RequestBody PetDTO petDTO) throws ValidationException {
+    public PetDTO savePet(@RequestBody PetDTO petDTO) {
         if(petService.exists(petDTO.getName(), petDTO.getType(), petDTO.getBirthDate()))
             throw new ValidationException(String
                     .format("Pet with the name %s, type %s and birthday %s already exists!",

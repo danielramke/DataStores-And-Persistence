@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @GetMapping("/customer/pet/{petId}")
-    public CustomerDTO getOwnerByPetID(@PathVariable long petId) {
+    public CustomerDTO getHolderByPetID(@PathVariable long petId) {
         try {
             return convertToCustomerDTO(userService.getCustomerByPetID(petId));
         } catch (Exception exception) {
